@@ -1,10 +1,5 @@
 
 #!/bin/bash
-echo "Entrez le nom du fichier :"
-read fichier
+read -p "Entrez le nom du fichier : " nomf
+[[ -f "$nomf" ]] && echo "Le fichier existe." || echo "Le fichier n'existe pas."
 
-if [ -f "$fichier" ]; then
-  echo "Le fichier existe."
-else
-  echo "Le fichier n'existe pas."
-fi
