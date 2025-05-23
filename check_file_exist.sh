@@ -1,31 +1,13 @@
+#!/bin/bash 
+# Demande à l'utilisateur de saisir le nom du fichier
+echo "Entrez le nom du fichier :"
+read filename
 
-#!/bin/bash
+# Vérifie si le fichier existe 
 
-while true; do
-  echo -n "Entrez le nom du fichier à vérifier : "
-  read fichier
+if [ -f "$filename" ]; then
+  echo "Le fichier '$filename' existe."
+else
+  echo "Le fichier '$filename' n'existe pas."
+fi 
 
-  # Vérifie si l'utilisateur a saisi quelque chose
-  if [[ -z "$fichier" ]]; then
-    echo " Aucun nom saisi. Veuillez réessayer."
-    continue
-  fi
-
-  # Vérifie si c'est un fichier
-  if [[ -f "$fichier" ]]; then
-    echo " Le fichier '$fichier' existe."
-    break
-  fi
-
-  # Vérifie si c'est un répertoire
-  if [[ -d "$fichier" ]]; then
-    echo " '$fichier' est un répertoire."
-    break
-  fi
-
-  # Sinon, fichier non trouvé
-  echo " Aucun fichier ou dossier trouvé avec ce nom."
-  echo -n "Voulez-vous réessayer ? (o/n) : "
-  read reponse
-  [[ "$reponse" != "o" && "$reponse" != "O" ]] && break
-done
